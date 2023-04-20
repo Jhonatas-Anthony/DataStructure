@@ -23,6 +23,8 @@ Listerei algumas opções disponíveis:
 - [Replit](https://replit.com/languages/cpp)
 - [Programiz](https://www.programiz.com/cpp-programming/online-compiler/)
 
+## Contato com desenvolvedor
+Caso encontre algum erroo, envie-me um e-mail que lancarei uma errata com as devidas correções. 
 ---
 
 # Data Structure in C++
@@ -49,3 +51,6 @@ Here are some available options:
 - [Online-cpp](https://www.online-cpp.com/)
 - [Replit](https://replit.com/languages/cpp)
 - [Programiz](https://www.programiz.com/cpp-programming/online-compiler/)
+
+## Contact with developer
+If you find any errors, send me an e-mail and I will release an errata with the necessary corrections.
