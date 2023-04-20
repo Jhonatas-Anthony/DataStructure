@@ -1,5 +1,5 @@
 # Bubble Sort 
-
+## Explicação em português
 O algoritmo Bubble Sort é um script com complexidade O(n²), visto que usa um loop dentro de outro para verificar se um valor é menor ou maior e fazer as devidas ordenações. 
 
 Imagine que temos uma lista desordenada com 10 posições - o Bubble Sort não é o algoritmo mais recomendado por causa da sua complexidade, mas se optarmos por usá-lo, saiba que vai acontecer o seguinte:
@@ -13,7 +13,7 @@ Esse algoritmo conta com dois laços de repetição, o primeiro loop vai percorr
 Perceba que dessa forma, já na primeira comparação, o Bubble Sort vai afirmar que o maior elemento vai para o final da lista, logo, não precisamos mais verificar aquela posição, por isso o segundo loop vai até a posição N - I, onde I é a quantidade de vezes que o loop aconteceu.
 
 ---
-
+## Explanation in english
 The Bubble Sort algorithm is a script with O(n²) complexity, since it uses a loop inside another to check if a value is smaller or larger and make the necessary orders.
 
 Imagine that we have an unordered list with 10 positions - Bubble Sort is not the most recommended algorithm because of its complexity, but if we choose to use it, know that the following will happen:
