@@ -23,6 +23,8 @@ Listerei algumas opções disponíveis:
 - [Replit](https://replit.com/languages/cpp)
 - [Programiz](https://www.programiz.com/cpp-programming/online-compiler/)
 
+---
+
 # Data Structure in C++
 
 Repository destined to store the data structures that will be studied in the future and some concepts that involve data structure, in addition to also keeping the explanations about each one - will serve as a personal and public future support.
