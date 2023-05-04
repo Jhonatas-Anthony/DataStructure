@@ -1,5 +1,6 @@
 #include <iostream>
 
+// Poderia usar o std::swap, função padrão que o c++ possui para trocar o endereço de um com o endereço de outro, basicamente, o algoritmo de baixo imita a função do std::swap.
 void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
