@@ -1,5 +1,8 @@
-g++ maior.h -o maior.h
-g++ maior.cpp -o class_def.cpp
-g++ main.cpp - o main
+#!/bin/bash
 
-./main
+g++ -c maior.cpp
+g++ -c main.cpp
+
+g++ maior.o main.o -o program
+
+./program
