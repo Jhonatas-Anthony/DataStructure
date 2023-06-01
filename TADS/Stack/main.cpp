@@ -11,7 +11,7 @@ Last Update: 1/06/2023
 int main(){
     Pilha pilha = Pilha();
 
-    /* pilha.empilhar('c');
+    pilha.empilhar('c');
     pilha.empilhar('i');
     pilha.empilhar('f');
     pilha.empilhar('h');
@@ -20,7 +20,7 @@ int main(){
     pilha.empilhar('p');
     pilha.empilhar('k');
     pilha.empilhar('j');
-    pilha.empilhar('b'); */
+    pilha.empilhar('b');
     pilha.vazio();
     pilha.cheio();
     int topo = pilha.topo();
