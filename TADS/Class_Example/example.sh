@@ -3,6 +3,6 @@
 g++ -c maior.cpp
 g++ -c main.cpp
 
-g++ maior.o main.o -o program
+g++ maior.o main.o -o program.out
 
 ./program
