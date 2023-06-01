@@ -20,16 +20,23 @@ Pilha::~Pilha()
 }
 
 void Pilha::empilhar(char valor)
-{   
-    if (length > 0){
+{
+    if (length == 0)
+    {
+        empty = 1;
+    }
+    else if (length > 0)
+    {
         empty = 0;
     }
-    if (length < CAPACIDADE){
+    if (length < CAPACIDADE)
+    {
         list[length] = valor;
-		length++;
+        length++;
         last = valor;
     }
-    if (length == CAPACIDADE){
+    if (length == CAPACIDADE)
+    {
         full = 1;
     }
 }
@@ -37,34 +44,33 @@ void Pilha::empilhar(char valor)
 void Pilha::desempilhar()
 {
     length--;
+    last = list[length - 1];
+    std::cout << "Desempilhando" << std::endl; 
 }
 
-int Pilha::topo(){
-    if(empty == 1){
+int Pilha::topo()
+{
+    if (empty == 1)
+    {
         std::cout << "Não existem valores \n";
         return 0;
     }
-    else return last; 
+    else
+        return last;
 }
 
-void Pilha::vazio(){
-    if(empty == 1){
+void Pilha::vazio()
+{
+    if (empty == 1)
+    {
         std::cout << "A pilha está vazia \n";
     }
 }
 
-void Pilha::cheio(){
-    if(full == 1){
+void Pilha::cheio()
+{
+    if (full == 1)
+    {
         std::cout << "A pilha está cheia \n";
     }
-    else{
-       std::cout << "A pilha não está cheia \n"; 
-    }
 }
-
-/* void Pilha::print(){
-    for(int i=0 ; i < CAPACIDADE ; i++){
-		std::cout<< (char)list[i] <<" ";
-	}
-	std::cout << std::endl;
-} */

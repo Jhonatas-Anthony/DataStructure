@@ -26,5 +26,12 @@ int main(){
     int topo = pilha.topo();
 
     std::cout << "Último valor da pilha: " << (char)topo << std::endl;
+    pilha.desempilhar();
+    topo = pilha.topo();
+    std::cout << "Último valor da pilha: " << (char)topo << std::endl;
+
+
+
+
     return 0;
 }

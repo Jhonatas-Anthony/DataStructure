@@ -24,7 +24,7 @@ private:
     int list[CAPACIDADE];
     int length;
     int last;
-    bool empty = 1;
+    bool empty;
     bool full;
 };
 
