@@ -2,7 +2,7 @@
 Title: fila.hpp
 Author: Jhonatas Anthony Dantas Araújo
 Date: 1/06/2023
-Last Update: 1/06/2023
+Last Update: 2/06/2023
 */
 
 #ifndef FILA_HPP
@@ -15,7 +15,7 @@ public:
     Fila();
     ~Fila();
     void enfileirar(char valor);
-    void desemfileirar();
+    void desenfileirar();
     int proximo();
     void vazio();
     void cheio();
@@ -23,8 +23,7 @@ public:
 private:
     int list[CAPACIDADE];
     int length;
-    bool empty;
-    bool full;
+    int first;
 };
 
 #endif
