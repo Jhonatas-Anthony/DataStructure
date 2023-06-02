@@ -17,8 +17,8 @@ public:
     void enfileirar(char valor);
     void desenfileirar();
     int proximo();
-    void vazio();
-    void cheio();
+    bool vazio();
+    bool cheio();
 
 private:
     int list[CAPACIDADE];

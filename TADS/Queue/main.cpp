@@ -22,11 +22,14 @@ int main()
     fila.enfileirar('h');
     fila.enfileirar('j');
     fila.enfileirar('z');
+
+    fila.cheio();
+    fila.vazio();
+
     int proximo = fila.proximo();
     std::cout << "O proximo elemento da fila é: " << (char)proximo << std::endl;
 
     fila.desenfileirar();
-
     proximo = fila.proximo();
     std::cout << "O proximo elemento da fila é: " << (char)proximo << std::endl;
 

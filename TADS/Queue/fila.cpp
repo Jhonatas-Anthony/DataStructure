@@ -35,6 +35,7 @@ void Fila::enfileirar(char valor)
 
 void Fila::desenfileirar()
 {
+    std::cout << "Desenfileirando... ";
     first ++;
 }
 
@@ -43,18 +44,22 @@ int Fila::proximo()
     return list[first];
 }
 
-void Fila::vazio()
+bool Fila::vazio()
 {
     if (length == 0)
     {
         std::cout << "A Fila está vazia \n";
+        return 1;
     }
+    else return 0;
 }
 
-void Fila::cheio()
+bool Fila::cheio()
 {
     if (length == CAPACIDADE)
     {
         std::cout << "A Fila está cheia \n";
+        return 1;
     }
+    else return 0;
 }
