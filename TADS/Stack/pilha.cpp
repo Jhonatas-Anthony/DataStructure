@@ -52,22 +52,19 @@ bool Pilha::vazio()
 {
     if (length == 0)
     {
-       return 1;
+        std::cout << "A pilha está vazia";
+        return 1;
     }
-    else
-    {
-       return 0;
-    }
+    else return 0;
+
 }
 
 bool Pilha::cheio()
 {
     if (length == CAPACIDADE)
     {
-       return 1;
+        std::cout << "A pilha está cheia";
+        return 1;
     }
-    else
-    {
-       return 0;
-    }
+    else return 0;
 }
