@@ -5,4 +5,4 @@ g++ -c main.cpp
 
 g++ pilha.o main.o -o stack.out
 
-./queue.out
+./stack.out

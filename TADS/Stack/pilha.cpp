@@ -48,19 +48,26 @@ int Pilha::topo()
         return last;
 }
 
-void Pilha::vazio()
+bool Pilha::vazio()
 {
     if (length == 0)
     {
-        std::cout << "A pilha está vazia \n";
+       return 1;
+    }
+    else
+    {
+       return 0;
     }
 }
 
-void Pilha::cheio()
+bool Pilha::cheio()
 {
     if (length == CAPACIDADE)
     {
-        std::cout << "A pilha está cheia \n";
+       return 1;
     }
-    else std::cout << "A pilha não está cheia \n";
+    else
+    {
+       return 0;
+    }
 }

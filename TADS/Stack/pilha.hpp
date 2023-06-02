@@ -18,8 +18,8 @@ public:
     void desempilhar();
     int topo();
     /* mudar para bool */
-    void vazio();
-    void cheio();
+    bool vazio();
+    bool cheio();
 
 private:
     int list[CAPACIDADE];

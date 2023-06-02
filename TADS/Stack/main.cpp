@@ -21,17 +21,23 @@ int main(){
     pilha.empilhar('k');
     pilha.empilhar('j');
     pilha.empilhar('b');
-    pilha.vazio();
-    pilha.cheio();
-    int topo = pilha.topo();
+    bool empty = pilha.vazio();
+    bool full = pilha.cheio();
 
+    if (empty == 1){
+        std::cout << "A pilha está vazia \n";
+    }
+
+    if (full == 1){
+        std::cout << "A pilha está cheia \n";
+    }
+
+    int topo = pilha.topo();
     std::cout << "Último valor da pilha: " << (char)topo << std::endl;
+
     pilha.desempilhar();
     topo = pilha.topo();
     std::cout << "Último valor da pilha: " << (char)topo << std::endl;
-
-
-
 
     return 0;
 }
