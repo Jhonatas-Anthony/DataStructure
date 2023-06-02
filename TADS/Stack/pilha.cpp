@@ -11,6 +11,8 @@ Last Update: 1/06/2023
 Pilha::Pilha()
 {
     std::cout << "Construindo pilha padrão \n";
+    empty = 1;
+    full = 0;
     list[CAPACIDADE] = {};
 }
 
@@ -21,11 +23,7 @@ Pilha::~Pilha()
 
 void Pilha::empilhar(char valor)
 {
-    if (length == 0)
-    {
-        empty = 1;
-    }
-    else if (length > 0)
+    if (length > 0)
     {
         empty = 0;
     }
@@ -34,6 +32,7 @@ void Pilha::empilhar(char valor)
         list[length] = valor;
         length++;
         last = valor;
+        full = 0;
     }
     if (length == CAPACIDADE)
     {
