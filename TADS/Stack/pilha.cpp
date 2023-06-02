@@ -11,6 +11,7 @@ Last Update: 1/06/2023
 Pilha::Pilha()
 {
     std::cout << "Construindo pilha padrão \n";
+    length = 0;
     empty = 1;
     full = 0;
     list[CAPACIDADE] = {};
@@ -44,14 +45,14 @@ void Pilha::desempilhar()
 {
     length--;
     last = list[length - 1];
-    std::cout << "Desempilhando" << std::endl; 
+    std::cout << "Desempilhando..." << std::endl; 
 }
 
 int Pilha::topo()
 {
     if (empty == 1)
     {
-        std::cout << "Não existem valores \n";
+        throw std::logic_error("A pilha está vazia \n");
         return 0;
     }
     else
