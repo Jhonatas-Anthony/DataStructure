@@ -3,6 +3,6 @@
 g++ -c pilha.cpp
 g++ -c main.cpp
 
-g++ pilha.o main.o -o queue.out
+g++ pilha.o main.o -o stack.out
 
 ./queue.out
