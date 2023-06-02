@@ -1,5 +1,5 @@
 /*
-Title: stack.hpp
+Title: stack.cpp
 Author: Jhonatas Anthony Dantas Araújo
 Date: 31/05/2023
 Last Update: 1/06/2023
