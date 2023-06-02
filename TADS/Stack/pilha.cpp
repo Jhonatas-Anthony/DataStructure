@@ -12,8 +12,6 @@ Pilha::Pilha()
 {
     std::cout << "Construindo pilha padrão \n";
     length = 0;
-    empty = 1;
-    full = 0;
     list[CAPACIDADE] = {};
 }
 
@@ -24,20 +22,11 @@ Pilha::~Pilha()
 
 void Pilha::empilhar(char valor)
 {
-    if (length > 0)
-    {
-        empty = 0;
-    }
     if (length < CAPACIDADE)
     {
         list[length] = valor;
         length++;
         last = valor;
-        full = 0;
-    }
-    if (length == CAPACIDADE)
-    {
-        full = 1;
     }
 }
 
@@ -50,9 +39,9 @@ void Pilha::desempilhar()
 
 int Pilha::topo()
 {
-    if (empty == 1)
+    if (length == 0)
     {
-        throw std::logic_error("A pilha está vazia \n");
+        throw std::logic_error("A  está vazia \n");
         return 0;
     }
     else
@@ -61,7 +50,7 @@ int Pilha::topo()
 
 void Pilha::vazio()
 {
-    if (empty == 1)
+    if (length == 0)
     {
         std::cout << "A pilha está vazia \n";
     }
@@ -69,8 +58,9 @@ void Pilha::vazio()
 
 void Pilha::cheio()
 {
-    if (full == 1)
+    if (length == CAPACIDADE)
     {
         std::cout << "A pilha está cheia \n";
     }
+    else std::cout << "A pilha não está cheia \n";
 }
