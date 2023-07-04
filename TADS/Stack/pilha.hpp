@@ -17,7 +17,6 @@ public:
     void empilhar(char valor);
     void desempilhar();
     int topo();
-    /* mudar para bool */
     bool vazio();
     bool cheio();
 
