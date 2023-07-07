@@ -1,92 +1,118 @@
 #include <iostream>
+#include <string>
 
 struct Node
 {
-  std::string data;
+  std::string senha;
   Node *next;
 
-  Node(const std::string &data) : data(data), next(nullptr){};
+  Node(const std::string &senha) : senha(senha), next(nullptr) {}
 };
 
-class PrioriryQueueBank
+class PriorityQueue
 {
 private:
   Node *front;
 
 public:
-  PrioriryQueueBank()
+  PriorityQueue()
   {
     front = nullptr;
-  };
+  }
 
-  void enqueue(const std::string &data)
+  void enqueue(const std::string &senha)
   {
-    Node *ficha = new Node(data);
-    char preference = data[0];
+    Node *newNode = new Node(senha);
 
-    // Inserção do primeiro elemento - Preferencial
-    if (front == nullptr || front->data[0] == 'N')
+    if (front == nullptr || front->senha[0] == 'N')
     {
-      ficha->next = front;
-      front = ficha;
+      newNode->next = front;
+      front = newNode;
     }
     else
     {
       Node *current = front;
-      int a = 0;
-      while (current->next != nullptr)
+
+      if (senha[0] == 'P')
       {
-        if (current->data[0] = 'P')
-        {
-          current = current->next;
-          std::cout << "devo aparecer duas vezes\n";
-        }
-        else
+        while (current->next != nullptr && current->next->senha[0] == 'P')
         {
           current = current->next;
         }
-        ficha->next = current->next;
-        current->next = ficha;
-        a++;
+        newNode->next = current->next;
+        current->next = newNode;
+      }
+      else
+      {
+        while (current->next != nullptr)
+        {
+          current = current->next;
+        }
+        newNode->next = current->next;
+        current->next = newNode;
       }
     }
-  };
+  }
+
+  void interleave()
+  {
+    Node *current = front;
+    Node *prev = nullptr;
+    Node *next = nullptr;
+
+    while (current != nullptr)
+    {
+        }
+  }
+
+  void dequeue()
+  {
+    if (!isEmpty())
+    {
+      Node *nodeToDelete = front;
+      front = front->next;
+      delete nodeToDelete;
+    }
+  }
+
+  bool isEmpty()
+  {
+    return front == nullptr;
+  }
 
   void print()
   {
+    if (isEmpty())
+    {
+      std::cout << "Priority queue is empty." << std::endl;
+      return;
+    }
+
     Node *current = front;
     while (current != nullptr)
     {
-      char preference = current->data[0];
-      std::string string = "null";
-      if (preference == 'N')
-      {
-        string = "Não Preferencial";
-      }
-      else if (preference == 'P')
-      {
-        string = "Preferencial";
-      }
-      std::cout << "Priority: " << string << ", Ficha: " << current->data << std::endl;
+
+      std::cout << "Senha: " << current->senha << std::endl;
+
       current = current->next;
     }
-  };
+  }
 };
 
 int main()
 {
-  // Saque - S
-  // Deposito - D
-  // Financiamento - F
-  PrioriryQueueBank pq;
-  pq.enqueue("N");
-  pq.enqueue("N");
-  pq.enqueue("P");
-  pq.enqueue("N");
-  pq.enqueue("N");
-  pq.enqueue("N");
-  pq.enqueue("P");
-  pq.enqueue("N");
+  PriorityQueue pq;
+  pq.enqueue("N1");
+  pq.enqueue("P1");
+  pq.enqueue("P2");
+  pq.enqueue("P3");
+  pq.enqueue("N2");
+  pq.enqueue("N3");
+  pq.enqueue("P4");
+  pq.enqueue("N4");
+  pq.enqueue("N5");
+
+  pq.interleave();
 
   pq.print();
 
