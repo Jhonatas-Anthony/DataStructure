@@ -1,43 +1,194 @@
 #include <iostream>
-#include <string>
 
+using namespace std;
+
+// Struct para representar um nó na fila de prioridade
 struct Node
 {
-  std::string senha;
+  string data;
+  int num;
   Node *next;
 
-  Node(const std::string &senha) : senha(senha), next(nullptr) {}
+  Node(const string &data) : data(data), next(nullptr) {}
 };
 
+// Classe para representar a fila de prioridade
 class PriorityQueue
 {
 private:
   Node *front;
+  int E = 0;
+  int S = 0;
+  int D = 0;
+  int F = 0;
+  int EN = 0;
+  int SN = 0;
+  int DN = 0;
+  int FN = 0;
 
 public:
+  // construtor
   PriorityQueue()
   {
     front = nullptr;
   }
 
-  void enqueue(const std::string &senha)
+  Node *frontReturn()
   {
-    Node *newNode = new Node(senha);
+    return front;
+  }
+
+  void enqueue(const string &data)
+  {
+    Node *newNode = new Node(data);
 
     if (front == nullptr)
     {
-      newNode->next = front;
+      newNode->next = nullptr;
+      if (data[1] == 'E')
+      {
+        if (data[0] == 'P')
+        {
+          newNode->num = EN;
+          EN++;
+        }
+        else
+        {
+          newNode->num = E;
+          E++;
+        }
+      }
+      else if (data[1] == 'D')
+      {
+        if (data[0] == 'P')
+        {
+          newNode->num = DN;
+          DN++;
+        }
+        else
+        {
+          newNode->num = D;
+          D++;
+        }
+      }
+      else if (data[1] == 'S')
+      {
+        if (data[0] == 'P')
+        {
+          newNode->num = SN;
+          SN++;
+        }
+        else
+        {
+          newNode->num = S;
+          S++;
+        }
+      }
+      else if (data[1] == 'F')
+      {
+        if (data[0] == 'P')
+        {
+          newNode->num = FN;
+          FN++;
+        }
+        else
+        {
+          newNode->num = F;
+          F++;
+        }
+      }
       front = newNode;
     }
     else
     {
       Node *current = front;
-      while (current->next != nullptr)
+      Node *previous = nullptr;
+      int control = 0;
+      int control2 = 0;
+
+      while (current != nullptr && (current->data[0] == 'P' || control < 2))
       {
+        if (current->data[0] == 'N')
+          control++;
+        else if (current->data[0] == 'P')
+        {
+          control = 0;
+          control2++;
+        }
+
+        previous = current;
         current = current->next;
       }
-      newNode->next = current->next;
-      current->next = newNode;
+
+      if ((control2 < 2 && data[0] == 'P') || (current == nullptr && data[0] == 'P'))
+      {
+        newNode->next = current;
+        if (previous != nullptr)
+          previous->next = newNode;
+        else
+          front = newNode;
+      }
+      else if (current != nullptr)
+      {
+        while (current != nullptr && (current->data[0] == 'N' || (current->data[0] == 'P' && current->num < newNode->num)))
+        {
+          previous = current;
+          current = current->next;
+        }
+
+        newNode->next = current;
+        previous->next = newNode;
+      }
+      else
+      {
+        previous->next = newNode;
+        newNode->next = nullptr;
+      }
+
+      if (data[1] == 'E')
+      {
+        newNode->num = E;
+        E++;
+      }
+      else if (data[1] == 'D')
+      {
+        if (data[0] == 'P')
+        {
+          newNode->num = DN;
+          DN++;
+        }
+        else
+        {
+          newNode->num = D;
+          D++;
+        }
+      }
+      else if (data[1] == 'S')
+      {
+        if (data[0] == 'P')
+        {
+          newNode->num = SN;
+          SN++;
+        }
+        else
+        {
+          newNode->num = S;
+          S++;
+        }
+      }
+      else if (data[1] == 'F')
+      {
+        if (data[0] == 'P')
+        {
+          newNode->num = FN;
+          FN++;
+        }
+        else
+        {
+          newNode->num = F;
+          F++;
+        }
+      }
     }
   }
 
@@ -51,64 +202,6 @@ public:
     }
   }
 
-  void interleave()
-  {
-    Node *current = front;
-    Node *currentPriority;
-    Node *currentSearch;
-    Node *lastPointer;
-
-    while (current != nullptr)
-    {
-      if (current->senha[0] == 'P')
-      {
-        currentPriority = current;
-        currentSearch = current;
-
-        // Primeiro caso: duas prioridades juntas
-        if (current->next->senha[0] == 'P')
-        {
-          while (currentSearch->senha[0] == 'P')
-          {
-            currentSearch = currentSearch->next;
-          }
-          lastPointer = currentPriority->next;
-          currentPriority->next = currentSearch;
-          currentSearch = lastPointer;
-        }
-        // Segundo caso: um não preferencial entre dois preferenciais
-        // else if (current->next->next->senha[0] == 'P')
-        //{
-        /* std::cout << currentSearch;
-        currentSearch = current->next->next;
-        std::cout << currentSearch; */
-        /* while (currentSearch->senha[0] == 'P')
-        {
-          currentSearch = currentSearch->next;
-        } */
-        //}
-        /* else if(current->next->next->next->senha[0] == 'P'){
-           currentPriority = current;
-        }*/
-        else
-        {
-          currentPriority = current;
-          currentSearch = current;
-          while (currentSearch->senha[0] == 'N')
-          {
-            currentSearch = currentSearch->next;
-          }
-          lastPointer = currentPriority->next->next;
-          currentPriority->next = lastPointer->next;
-          currentSearch->next = lastPointer;
-        }
-        std::cout << 'o';
-        current = current->next;
-      }
-      current = current->next;
-    }
-  }
-
   bool isEmpty()
   {
     return front == nullptr;
@@ -118,41 +211,149 @@ public:
   {
     if (isEmpty())
     {
-      std::cout << "Priority queue is empty." << std::endl;
+      cout << "Priority queue is empty." << endl;
       return;
     }
 
     Node *current = front;
+
     while (current != nullptr)
     {
-      std::cout << "Senha: " << current->senha << std::endl;
+      string str = to_string(current->num);
+      size_t n = 3;
+      int precision = n - min(n, str.size());
+      str.insert(0, precision, '0');
+      cout << "Senha: " << current->data[0] << current->data[1] << str << endl;
       current = current->next;
+    }
+  }
+
+  void mostrarPainel()
+  {
+    Node *current = front;
+    int contador = 0;
+    int guiche = 1;
+
+    string array[5];
+
+    while (current != nullptr && contador < 5)
+    {
+      array[contador] = current->data;
+      cout << array[contador] << " - Guichê " << guiche << endl;
+      current = current->next;
+      contador++;
+      guiche = (guiche % 5) + 1;
+    }
+    if (contador == 5)
+    {
+      contador = 0;
+      while (current != nullptr && contador < 5)
+      {
+        array[contador] = current->data;
+        cout << array[contador] << " - Guichê " << guiche << endl;
+        current = current->next;
+        contador++;
+        guiche = (guiche % 5) + 1;
+      }
     }
   }
 };
 
+string gerarSenha(int contador, char tipoCliente, char tipoOperacao)
+{
+  string senha = "";
+  senha += tipoCliente;
+  senha += tipoOperacao;
+  senha += to_string(contador / 1000);       // Primeiro dígito do contador
+  senha += to_string((contador / 100) % 10); // Segundo dígito do contador
+  senha += to_string((contador / 10) % 10);  // Terceiro dígito do contador
+  senha += to_string(contador % 10);         // Quarto dígito do contador
+  return senha;
+}
+
 int main()
 {
-  PriorityQueue pq;
-  pq.enqueue("N1");
-  pq.enqueue("N2");
-  pq.enqueue("P1");
-  pq.enqueue("P2");
-  pq.enqueue("P3");
-  pq.enqueue("N3");
-  pq.enqueue("N4");
-  pq.enqueue("P4");
-  pq.enqueue("N5");
-  pq.enqueue("N6");
-  pq.enqueue("N7");
-  pq.enqueue("N8");
-  pq.enqueue("N9");
-  pq.enqueue("N10");
-  pq.enqueue("P5");
+  PriorityQueue filaPrioridade;
+  PriorityQueue painel;
 
-  pq.interleave();
+  int contadorNaoPref = 0;
+  int contadorPref = 0;
 
-  pq.print();
+  char tipoOperacao;
 
-  return 0;
+  while (true)
+  {
+    cout << "########################\n";
+    cout << "Escolha uma opção:\n";
+    cout << "1. Retirar senha\n";
+    cout << "2. Chamar senha\n";
+    cout << "3. Mostrar painel\n";
+    cout << "4. Sair\n";
+    cout << "########################";
+    cout << endl;
+
+    int opcao;
+    cout << "Digite: ";
+    cin >> opcao;
+
+
+    switch (opcao)
+    {
+    case 1:
+      char tipoCliente;
+      cout << "Cliente \n P - Preferencial \n N - Não Preferencial \n Digite:";
+      cin >> tipoCliente;
+      cout << endl;
+      cout << "Tipo de operação\n S - Sacar \n D - Depositar \n F - Financiamento \n E - Emprestar \n Digite:";
+      cin >> tipoOperacao;
+      cout << endl;
+
+      if (tipoCliente == 'P')
+      {
+        string senha = gerarSenha(contadorPref, tipoCliente, tipoOperacao);
+        filaPrioridade.enqueue(senha);
+        contadorPref += 2; // Incrementa o contador de preferenciais em 2
+      }
+      else
+      {
+        string senha = gerarSenha(contadorNaoPref, tipoCliente, tipoOperacao);
+        filaPrioridade.enqueue(senha);
+        contadorNaoPref++;
+      }
+
+      cout << "Senha retirada." << endl;
+      break;
+
+    case 2:
+      if (filaPrioridade.isEmpty())
+      {
+        cout << "Nenhuma senha para chamar.\n";
+      }
+      else
+      {
+        Node *front = filaPrioridade.frontReturn();
+        painel.enqueue(front->data);
+        cout << "########################\n";
+        cout << "Senha chamada: " << front->data << endl;
+        cout << "########################\n";
+        filaPrioridade.dequeue();
+      }
+      break;
+
+    case 3:
+      cout << "########################\n";
+      cout << "Painel:\n";
+      painel.mostrarPainel();
+      cout << "########################\n";
+      break;
+
+    case 4:
+      cout << "Encerrando o programa.\n";
+      return 0;
+
+    default:
+      cout << "Opção inválida. Tente novamente.\n";
+      break;
+    }
+  }
 }
