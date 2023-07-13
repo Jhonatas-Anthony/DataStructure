@@ -17,10 +17,10 @@ class PriorityQueue
 {
 private:
   Node *front;
-  int E = 0;
-  int S = 0;
-  int D = 0;
-  int F = 0;
+  int EP = 0;
+  int SP = 0;
+  int DP = 0;
+  int FP = 0;
   int EN = 0;
   int SN = 0;
   int DN = 0;
@@ -49,52 +49,52 @@ public:
       {
         if (data[0] == 'P')
         {
-          newNode->num = EN;
-          EN++;
+          newNode->num = EP;
+          EP++;
         }
         else
         {
-          newNode->num = E;
-          E++;
+          newNode->num = EN;
+          EN++;
         }
       }
       else if (data[1] == 'D')
       {
         if (data[0] == 'P')
         {
-          newNode->num = DN;
-          DN++;
+          newNode->num = DP;
+          DP++;
         }
         else
         {
-          newNode->num = D;
-          D++;
+          newNode->num = DN;
+          DN++;
         }
       }
       else if (data[1] == 'S')
       {
         if (data[0] == 'P')
         {
-          newNode->num = SN;
-          SN++;
+          newNode->num = SP;
+          SP++;
         }
         else
         {
-          newNode->num = S;
-          S++;
+          newNode->num = SN;
+          SN++;
         }
       }
       else if (data[1] == 'F')
       {
         if (data[0] == 'P')
         {
-          newNode->num = FN;
-          FN++;
+          newNode->num = FP;
+          FP++;
         }
         else
         {
-          newNode->num = F;
-          F++;
+          newNode->num = FN;
+          FN++;
         }
       }
       front = newNode;
@@ -103,24 +103,24 @@ public:
     {
       Node *current = front;
       Node *previous = nullptr;
-      int control = 0;
-      int control2 = 0;
+      int controlN = 0;
+      int controlP = 0;
 
-      while (current != nullptr && (current->data[0] == 'P' || control < 2))
+      while (current != nullptr && (current->data[0] == 'P' || controlN < 2))
       {
         if (current->data[0] == 'N')
-          control++;
+          controlN++;
         else if (current->data[0] == 'P')
         {
-          control = 0;
-          control2++;
+          controlN = 0;
+          controlP++;
         }
 
         previous = current;
         current = current->next;
       }
 
-      if ((control2 < 2 && data[0] == 'P') || (current == nullptr && data[0] == 'P'))
+      if ((controlP < 2 && data[0] == 'P') || (current == nullptr && data[0] == 'P'))
       {
         newNode->next = current;
         if (previous != nullptr)
@@ -147,46 +147,54 @@ public:
 
       if (data[1] == 'E')
       {
-        newNode->num = E;
-        E++;
+        if (data[0] == 'P')
+        {
+          newNode->num = EP;
+          EP++;
+        }
+        else
+        {
+          newNode->num = EN;
+          EN++;
+        }
       }
       else if (data[1] == 'D')
       {
         if (data[0] == 'P')
         {
-          newNode->num = DN;
-          DN++;
+          newNode->num = DP;
+          DP++;
         }
         else
         {
-          newNode->num = D;
-          D++;
+          newNode->num = DN;
+          DN++;
         }
       }
       else if (data[1] == 'S')
       {
         if (data[0] == 'P')
         {
-          newNode->num = SN;
-          SN++;
+          newNode->num = SP;
+          SP++;
         }
         else
         {
-          newNode->num = S;
-          S++;
+          newNode->num = SN;
+          SN++;
         }
       }
       else if (data[1] == 'F')
       {
         if (data[0] == 'P')
         {
-          newNode->num = FN;
-          FN++;
+          newNode->num = FP;
+          FP++;
         }
         else
         {
-          newNode->num = F;
-          F++;
+          newNode->num = FN;
+          FN++;
         }
       }
     }
