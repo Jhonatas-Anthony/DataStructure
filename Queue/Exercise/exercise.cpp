@@ -272,7 +272,6 @@ string gerarSenha(int contador, char tipoCliente, char tipoOperacao)
   string senha = "";
   senha += tipoCliente;
   senha += tipoOperacao;
-  senha += to_string(contador / 1000);       // Primeiro dígito do contador
   senha += to_string((contador / 100) % 10); // Segundo dígito do contador
   senha += to_string((contador / 10) % 10);  // Terceiro dígito do contador
   senha += to_string(contador % 10);         // Quarto dígito do contador
@@ -282,10 +281,39 @@ string gerarSenha(int contador, char tipoCliente, char tipoOperacao)
 int main()
 {
   PriorityQueue filaPrioridade;
-  PriorityQueue painel;
+  PriorityQueue chamada;
 
-  int contadorNaoPref = 0;
-  int contadorPref = 0;
+  //Primeiro caso - Sequencia de Não Preferenciais
+  /* filaPrioridade.enqueue("NS000");
+  filaPrioridade.enqueue("NS001");
+  filaPrioridade.enqueue("NS002");
+  filaPrioridade.enqueue("NS003");
+  filaPrioridade.enqueue("NS004");
+  filaPrioridade.enqueue("PS000");
+  filaPrioridade.enqueue("PS001"); */
+
+  //Segundo caso - Sequência de Preferênciais
+  /* filaPrioridade.enqueue("PS000");
+  filaPrioridade.enqueue("PS001");
+  filaPrioridade.enqueue("PS002");
+  filaPrioridade.enqueue("PS003");
+  filaPrioridade.enqueue("PS004");
+  filaPrioridade.enqueue("NS000");
+  filaPrioridade.enqueue("NS001"); */
+
+  //Terceiro caso - Aleatorio
+  /* filaPrioridade.enqueue("NS000");
+  filaPrioridade.enqueue("PS000");
+  filaPrioridade.enqueue("NS001");
+  filaPrioridade.enqueue("NS002");
+  filaPrioridade.enqueue("NS003");
+  filaPrioridade.enqueue("PS001");
+  filaPrioridade.enqueue("NS004"); */
+
+
+
+  int contadrNP = 0;
+  int contadorP = 0;
 
   char tipoOperacao;
 
@@ -318,15 +346,15 @@ int main()
 
       if (tipoCliente == 'P')
       {
-        string senha = gerarSenha(contadorPref, tipoCliente, tipoOperacao);
+        string senha = gerarSenha(contadorP, tipoCliente, tipoOperacao);
         filaPrioridade.enqueue(senha);
-        contadorPref += 2; // Incrementa o contador de preferenciais em 2
+        contadorP ++; // Incrementa o contador de preferenciais em 2
       }
       else
       {
-        string senha = gerarSenha(contadorNaoPref, tipoCliente, tipoOperacao);
+        string senha = gerarSenha(contadrNP, tipoCliente, tipoOperacao);
         filaPrioridade.enqueue(senha);
-        contadorNaoPref++;
+        contadrNP++;
       }
 
       cout << "Senha retirada." << endl;
@@ -340,7 +368,7 @@ int main()
       else
       {
         Node *front = filaPrioridade.frontReturn();
-        painel.enqueue(front->data);
+        chamada.enqueue(front->data);
         cout << "########################\n";
         cout << "Senha chamada: " << front->data << endl;
         cout << "########################\n";
@@ -351,7 +379,7 @@ int main()
     case 3:
       cout << "########################\n";
       cout << "Painel:\n";
-      painel.mostrarPainel();
+      chamada.mostrarPainel();
       cout << "########################\n";
       break;
 
