@@ -299,7 +299,11 @@ int main()
   filaPrioridade.enqueue("PS003");
   filaPrioridade.enqueue("PS004");
   filaPrioridade.enqueue("NS000");
-  filaPrioridade.enqueue("NS001"); */
+  filaPrioridade.enqueue("NS001");
+  filaPrioridade.enqueue("NS002");
+  filaPrioridade.enqueue("NS003");
+  filaPrioridade.enqueue("NS004");
+  filaPrioridade.enqueue("NS005"); */
 
   //Terceiro caso - Aleatorio
   /* filaPrioridade.enqueue("NS000");
