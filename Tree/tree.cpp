@@ -1,3 +1,7 @@
+/* 
+  Erro nas funções in order e post order
+*/
+
 #include <iostream>
 
 struct Node
@@ -66,9 +70,9 @@ private:
   {
     if (currentNode != nullptr)
     {
-      printPreOrder(currentNode->left);
+      printInOrder(currentNode->left);
       std::cout << currentNode->value << " ";
-      printPreOrder(currentNode->right);
+      printInOrder(currentNode->right);
     }
   }
 
@@ -76,8 +80,8 @@ private:
   {
     if (currentNode != nullptr)
     {
-      printPreOrder(currentNode->left);
-      printPreOrder(currentNode->right);
+      printPostOrder(currentNode->left);
+      printPostOrder(currentNode->right);
       std::cout << currentNode->value << " ";
     }
   }
@@ -155,11 +159,6 @@ int main()
   tree.insert(40);
   tree.insert(60);
   tree.insert(90);
-  tree.insert(55);
-  tree.insert(65);
-  tree.insert(85);
-  tree.insert(82);
-  tree.insert(100);
 
   tree.depth();
 
